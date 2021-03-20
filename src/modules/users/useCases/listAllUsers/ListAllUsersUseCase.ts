@@ -9,9 +9,7 @@ class ListAllUsersUseCase {
   constructor(private usersRepository: IUsersRepository) {}
 
   execute({ user_id }: IRequest): User[] {
-    const id = user_id;
-
-    const user = this.usersRepository.findById(id);
+    const user = this.usersRepository.findById(user_id);
 
     if (!user) {
       throw new Error("User not found!");
@@ -21,7 +19,9 @@ class ListAllUsersUseCase {
       throw new Error("User not authorized!");
     }
 
-    return this.usersRepository.list();
+    const allUsers = this.usersRepository.list();
+
+    return allUsers;
   }
 }
 
