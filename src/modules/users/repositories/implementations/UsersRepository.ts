@@ -23,9 +23,10 @@ class UsersRepository implements IUsersRepository {
 
     Object.assign(user, {
       name,
-      admin: false,
       email,
+      admin: false,
       created_at: new Date(),
+      updated_at: new Date(),
     });
 
     this.users.push(user);
