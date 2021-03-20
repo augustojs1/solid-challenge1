@@ -1,0 +1,160 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "SOLID API Documentation",
+        "description": "This is API for testing SOLID knowledge",
+        "version":"1.0.0",
+        "contact": {
+            "email":"augustojs1@gmail.com"
+        }
+    },
+    "paths": {
+        "/users": {
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create User",
+                "description": "Create a new User",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "example": {
+                                    "name":"User name sample",
+                                    "email": "User email sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description":"User Created"
+                    },
+                    "400": {
+                        "description": "Email already in use"
+                    }
+                }
+            },
+            "get": {
+                "tags":["Users"],
+                "summary": "Get all Users",
+                "description": "List all Users",
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "name": {
+                                                "type": "string"
+                                            },
+                                            "email": {
+                                                "type": "string"
+                                            },
+                                            "admin": {
+                                                "type": "boolean"
+                                            },
+                                            "created_at": {
+                                                "type": "date"
+                                            },
+                                            "updated_at": {
+                                                "type": "date"
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+    },
+            "post": {
+                "tags": ["Users"],
+                "summary": "Create User",
+                "description": "Create a new User",
+                "requestBody": {
+                    "content": {
+                        "application/json": {
+                            "schema": {
+                                "type": "object",
+                                "name": {
+                                    "type": "string"
+                                },
+                                "email": {
+                                    "type": "string"
+                                },
+                                "example": {
+                                    "name":"User name sample",
+                                    "email": "User email sample"
+                                }
+                            }
+                        }
+                    }
+                },
+                "responses": {
+                    "201": {
+                        "description":"User Created"
+                    },
+                    "400": {
+                        "description": "Email already in use"
+                    }
+                }
+            },
+    
+            "/users/:user_id/admin": {
+                "patch": {
+                    "tags": ["Users"],
+                    "summary": "User to Admin",
+                    "description": "Giver a User passed by Id Admin permission",
+                    "requestBody": {
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "object",                
+                                    "example": {
+                                        "/users/31312-fdsfs-543543-fdgd/admin":"User with Id on URL is now a Admin"
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "responses": {
+                        "200": {
+                            "description":"User with Id on params now has Admin permission"
+                        },
+                        "400": {
+                            "description": "User not found"
+                        }
+                    }
+                }
+            },
+
+            "/users/:user_id": {
+                "get": {
+                    "tags":["Users"],
+                    "summary": "Get a User",
+                    "description": "Get a single user using the ID on params",
+                    "responses": {
+                        "200": {
+                            "description":"Succesful request"
+                        },
+                        "400": {
+                            "description": "User not found"
+                        }
+                    }
+                }
+            }     
+    }
+}
